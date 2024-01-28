@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
   clearAuthHeader,
+  getCurrentUser,
   loginUser,
   logoutUser,
   setAuthHeader,
