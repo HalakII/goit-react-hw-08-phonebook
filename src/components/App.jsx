@@ -1,16 +1,34 @@
+import 'react-notifications/lib/notifications.css';
+import { NotificationContainer } from 'react-notifications';
+import { ContactsList } from './ContactsList/ContactsList';
+import { SectionTitle } from './SectionTitle/SectionTitle';
+import { SectionSubtitle } from './SectionSubtitle/SectionSubtitle';
+import { ContactForm } from './Form/ContactForm';
+import { ContactsFilter } from './Filter/Filter';
+import css from './App.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchContacts } from '../redux/contacts/operations';
+import { selectError, selectIsLoading } from '../redux/contacts/selectors';
+
 export const App = () => {
+  const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
+    <div className={css.wrapper}>
+      <NotificationContainer />
+      <SectionTitle title="Phonebook" />
+      <ContactForm />
+      <SectionSubtitle subtitle="Contacts" />
+      <ContactsFilter />
+      {isLoading && !error && <b>Request in progress...</b>}
+      <ContactsList />
     </div>
   );
 };
