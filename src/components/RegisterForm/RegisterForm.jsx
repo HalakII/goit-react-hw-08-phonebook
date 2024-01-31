@@ -1,12 +1,16 @@
 import { useDispatch } from 'react-redux';
 import css from './RegisterForm.module.css';
 import { register } from '../../redux/auth/operations';
+import { RiLockPasswordFill } from 'react-icons/ri';
+import { IoIosPersonAdd } from 'react-icons/io';
+import { IoMdMailUnread } from 'react-icons/io';
 export const RegisterForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = event => {
     event.preventDefault();
     const form = event.currentTarget;
+    console.log(event);
     console.log(form.elements.name.value);
     console.log(form.elements.email.value);
     console.log(form.elements.password.value);
@@ -21,10 +25,16 @@ export const RegisterForm = () => {
     form.reset();
   };
   return (
-    <form className={css.form} onSubmit={handleSubmit} autoComplete="off">
+    <form
+      className={css.form_wrapper}
+      onSubmit={handleSubmit}
+      autoComplete="off"
+    >
       <label className={css.label}>
+        <IoIosPersonAdd className={css.iconUser} />
         Username
         <input
+          className={css.input}
           type="text"
           name="name"
           // pattern="^[a-zA-Za-яА-Я]+(([' \-][a-zA-Za-яА-Я ])?[a-zA-Za-яА-Я]*)*$"
@@ -33,8 +43,10 @@ export const RegisterForm = () => {
         />
       </label>
       <label className={css.label}>
+        <IoMdMailUnread className={css.iconMail} />
         Email
         <input
+          className={css.input}
           type="email"
           name="email"
           // pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
@@ -42,9 +54,12 @@ export const RegisterForm = () => {
           // required
         />
       </label>
+
       <label className={css.label}>
+        <RiLockPasswordFill className={css.iconPassword} />
         Password
         <input
+          className={css.input}
           type="password"
           name="password"
           // pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
@@ -52,7 +67,9 @@ export const RegisterForm = () => {
           // required
         />
       </label>
-      <button type="submit">Register</button>
+      <button className={css.button_add} type="submit">
+        Register
+      </button>
     </form>
   );
 };
