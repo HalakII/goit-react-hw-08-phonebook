@@ -1,39 +1,36 @@
-// import 'react-notifications/lib/notifications.css';
-// import { NotificationContainer } from 'react-notifications';
-// import { ContactsList } from './ContactsList/ContactsList';
-// import { SectionTitle } from './SectionTitle/SectionTitle';
-// import { SectionSubtitle } from './SectionSubtitle/SectionSubtitle';
-// import { ContactForm } from './Form/ContactForm';
-// import { ContactsFilter } from './Filter/Filter';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { useEffect } from 'react';
-// import { fetchContacts } from '../redux/contacts/operations';
-// import { selectError, selectIsLoading } from '../redux/contacts/selectors';
-// import { RegisterForm } from './RegisterForm/RegisterForm';
-// import { LoginForm } from './LoginForm/LoginForm';
-// import { UserMenu } from './UserMenu/UserMenu';
+import { Route, Routes } from 'react-router-dom';
+import { Layout } from './Layout/Layout';
+import { lazy, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsRefreshing } from '../redux/auth/selectors';
+import { refreshUser } from '../redux/auth/operations';
 
-// export const App = () => {
-//   const dispatch = useDispatch();
-//   const isLoading = useSelector(selectIsLoading);
-//   const error = useSelector(selectError);
+const Home = lazy(() => import('../pages/Home'));
+const Register = lazy(() => import('../pages/Register'));
+const Login = lazy(() => import('../pages/Login'));
+const Contacts = lazy(() => import('../pages/Contacts/Contacts'));
 
-//   useEffect(() => {
-//     dispatch(fetchContacts());
-//   }, [dispatch]);
+export const App = () => {
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
 
-//   return (
-//     <div className={css.wrapper}>
-//       <RegisterForm />
-//       <LoginForm />
-//       <UserMenu />
-//       <NotificationContainer />
-//       <SectionTitle title="Phonebook" />
-//       <ContactForm />
-//       <SectionSubtitle subtitle="Contacts" />
-//       <ContactsFilter />
-//       {isLoading && !error && <b>Request in progress...</b>}
-//       <ContactsList />
-//     </div>
-//   );
-// };
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
+    <div>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/contacts" element={<Contacts />} />
+          <Route path="*" element={<div>Not Found</div>} />
+        </Route>
+      </Routes>
+    </div>
+  );
+};
