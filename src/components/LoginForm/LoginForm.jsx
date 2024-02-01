@@ -33,7 +33,7 @@ export const LoginForm = () => {
           className={css.input}
           type="email"
           name="email"
-         
+          required
         />
       </label>
       <label className={css.label}>
@@ -43,7 +43,8 @@ export const LoginForm = () => {
           className={css.input}
           type="password"
           name="password"
-         
+          minLength={5}
+          required
         />
       </label>
       <button className={css.button_add} type="submit">

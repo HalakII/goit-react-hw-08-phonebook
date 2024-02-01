@@ -37,6 +37,8 @@ export const RegisterForm = () => {
           className={css.input}
           type="text"
           name="name"
+          minLength={2}
+          required
           
         />
       </label>
@@ -47,6 +49,7 @@ export const RegisterForm = () => {
           className={css.input}
           type="email"
           name="email"
+          required
          
         />
       </label>
@@ -58,6 +61,8 @@ export const RegisterForm = () => {
           className={css.input}
           type="password"
           name="password"
+          minLength={5}
+          required
          
         />
       </label>
