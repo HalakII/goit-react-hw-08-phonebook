@@ -29,14 +29,7 @@ export const LoginForm = () => {
       <label className={css.label}>
         <IoMdMailUnread className={css.iconMail} />
         Email
-        <input
-          className={css.input}
-          type="email"
-          name="email"
-          // pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
-          // title="Please enter a valid email address"
-          // required
-        />
+        <input className={css.input} type="email" name="email" required />
       </label>
       <label className={css.label}>
         <RiLockPasswordFill className={css.iconPassword} />
@@ -45,9 +38,8 @@ export const LoginForm = () => {
           className={css.input}
           type="password"
           name="password"
-          // pattern="^[a-zA-Z0-9!@#$%^&*()-_=+`~[\\]{}|:<>/?]+$"
-          // title="The password should only contain Latin letters (both large and lowercase), numbers and other characters"
-          // required
+          minLength={5}
+          required
         />
       </label>
       <button className={css.button_add} type="submit">
