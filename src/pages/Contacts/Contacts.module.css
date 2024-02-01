@@ -29,3 +29,7 @@
   width: 70px;
   height: 70px;
 }
+.text {
+  text-align: center;
+  margin: 0 25px;
+}

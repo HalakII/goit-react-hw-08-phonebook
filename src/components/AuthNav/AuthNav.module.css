@@ -8,5 +8,5 @@
 }
 
 .link.active {
-  color: #e84a5f;
+  text-decoration: underline;
 }

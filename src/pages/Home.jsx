@@ -6,6 +6,10 @@ const Home = () => {
     <div className={css.wrapper}>
       <FcTwoSmartphones className={css.icon} />
       <SectionTitle title="Phonebook Application" />
+      <p className={css.text}>
+        To open your Phonebook please log in. If you do not have an account yet,
+        please register.
+      </p>
     </div>
   );
 };
