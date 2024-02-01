@@ -37,9 +37,7 @@ export const RegisterForm = () => {
           className={css.input}
           type="text"
           name="name"
-          // pattern="^[a-zA-Za-яА-Я]+(([' \-][a-zA-Za-яА-Я ])?[a-zA-Za-яА-Я]*)*$"
-          // title="Name may contain only letters, apostrophe, dash and spaces"
-          // required
+          
         />
       </label>
       <label className={css.label}>
@@ -49,9 +47,7 @@ export const RegisterForm = () => {
           className={css.input}
           type="email"
           name="email"
-          // pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
-          // title="Please enter a valid email address"
-          // required
+         
         />
       </label>
 
@@ -62,9 +58,7 @@ export const RegisterForm = () => {
           className={css.input}
           type="password"
           name="password"
-          // pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-          // title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-          // required
+         
         />
       </label>
       <button className={css.button_add} type="submit">
