@@ -1,8 +1,11 @@
-import css from './Contacts/Contacts.module.css'
+import { SectionTitle } from 'components/SectionTitle/SectionTitle';
+import css from './Contacts/Contacts.module.css';
+import { FcTwoSmartphones } from 'react-icons/fc';
 const Home = () => {
   return (
     <div className={css.wrapper}>
-      <h1>Phonebook Application</h1>
+      <FcTwoSmartphones className={css.icon} />
+      <SectionTitle title="Phonebook Application" />
     </div>
   );
 };

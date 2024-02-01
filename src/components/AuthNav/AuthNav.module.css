@@ -3,7 +3,8 @@
   text-decoration: none;
   padding: 12px;
   font-weight: 700;
-  color: #2a363b;
+  color: black;
+  font-size: 18px;
 }
 
 .link.active {

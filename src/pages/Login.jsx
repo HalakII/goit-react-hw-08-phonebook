@@ -6,7 +6,7 @@ import { SectionTitle } from 'components/SectionTitle/SectionTitle';
 const Login = () => {
   return (
     <div className={css.wrapper}>
-      <SectionTitle title="Login" />
+      <SectionTitle title="Log In" />
       <LoginForm />
     </div>
   );
