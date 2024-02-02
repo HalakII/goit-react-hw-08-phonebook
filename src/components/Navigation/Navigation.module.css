@@ -7,6 +7,9 @@
   font-size: 18px;
 }
 
-.link.active {
-  color: rebeccapurple;
+.active {
+  text-decoration: underline;
+  font-weight: 700;
+  color: #790df2;
+  font-size: 18px;
 }
